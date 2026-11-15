@@ -24,13 +24,19 @@ func _ready() -> void:
 		spike.connect("body_entered", on_spike_entered)
 
 func levelup():
-	print("swapping!")
+	$RunLabel.visible = false
 	remove_child(levelinstance)
-	if level == len(levels): return
 	level += 1
+	if level >= len(levels): return
 	$player.level = level
 	levelinstance = levels[level].instantiate()
-	call_deferred("add_child", levelinstance)
+	add_child(levelinstance)
+	for wall: Area2D in get_tree().get_nodes_in_group("bouncable_walls"):
+		wall.connect("body_entered", on_bouncy_entered)
+	for wall: Area2D in get_tree().get_nodes_in_group("up_bouncable_walls"):
+		wall.connect("body_entered", on_up_bouncy_entered)
+	for spike: Area2D in get_tree().get_nodes_in_group("spikes"):
+		spike.connect("body_entered", on_spike_entered)
 
 func _process(_delta: float) -> void:
 	if $player.jumped:
