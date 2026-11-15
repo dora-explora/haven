@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://b4locmxaumksb"]
+
+[ext_resource type="Script" uid="uid://b02i6gu8ut3mp" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://d35s3la1qgtml" path="res://Squirrel/idle/Sprites/player-idle-1.png" id="2_5tmop"]
+[ext_resource type="Texture2D" uid="uid://d074hlm5cwp4h" path="res://Squirrel/idle/Sprites/player-idle-2.png" id="2_pbfsw"]
+[ext_resource type="Texture2D" uid="uid://csmk7h16s8au3" path="res://Squirrel/idle/Sprites/player-idle-3.png" id="3_5tmop"]
+[ext_resource type="Texture2D" uid="uid://bo557yowiv1ji" path="res://Squirrel/idle/Sprites/player-idle-4.png" id="4_7ahtn"]
+[ext_resource type="Texture2D" uid="uid://dcqhsgovfv3d5" path="res://Squirrel/idle/Sprites/player-idle-5.png" id="5_7lmhl"]
+[ext_resource type="Texture2D" uid="uid://2ayay8dtdv3b" path="res://Squirrel/idle/Sprites/player-idle-6.png" id="6_dx0e4"]
+[ext_resource type="Texture2D" uid="uid://bmmv85jo5eq53" path="res://Squirrel/idle/Sprites/player-idle-7.png" id="7_jm5j8"]
+[ext_resource type="Texture2D" uid="uid://bixcimedlgul4" path="res://Squirrel/idle/Sprites/player-idle-8.png" id="8_7hik5"]
+[ext_resource type="Texture2D" uid="uid://cncy4ny8xpa3q" path="res://Squirrel/jump/Sprites/player-jump-1.png" id="9_qtqh7"]
+[ext_resource type="Texture2D" uid="uid://b7v0qki2l35aw" path="res://Squirrel/jump/Sprites/player-jump-2.png" id="10_2wuci"]
+[ext_resource type="Texture2D" uid="uid://bi68wt8ngntku" path="res://Squirrel/jump/Sprites/player-jump-3.png" id="11_iruf7"]
+[ext_resource type="Texture2D" uid="uid://csoneb1j16o2r" path="res://Squirrel/jump/Sprites/player-jump-4.png" id="12_j5n4i"]
+[ext_resource type="Texture2D" uid="uid://barv1ekuc5341" path="res://Squirrel/run/Sprites/player-run-1.png" id="13_634y6"]
+[ext_resource type="Texture2D" uid="uid://cfmy7tjmhnip6" path="res://Squirrel/run/Sprites/player-run-2.png" id="14_efrwb"]
+[ext_resource type="Texture2D" uid="uid://dbaw5baq32x3x" path="res://Squirrel/run/Sprites/player-run-3.png" id="15_hiqhm"]
+[ext_resource type="Texture2D" uid="uid://bc14miqpbn784" path="res://Squirrel/run/Sprites/player-run-4.png" id="16_tkwlq"]
+[ext_resource type="Texture2D" uid="uid://b0uhdqxtt0yvw" path="res://Squirrel/run/Sprites/player-run-5.png" id="17_hl5qd"]
+[ext_resource type="Texture2D" uid="uid://c8lm5o303xn5k" path="res://Squirrel/run/Sprites/player-run-6.png" id="18_ek41f"]
+[ext_resource type="Texture2D" uid="uid://bwy08xqg8a21w" path="res://Squirrel/crouch/Frames/player-crouch-1.png" id="19_khis8"]
+[ext_resource type="Texture2D" uid="uid://c6pqbtoxdkxvg" path="res://Squirrel/crouch/Frames/player-crouch-2.png" id="20_b88wv"]
+
+[sub_resource type="Animation" id="Animation_pgbbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 1,
+"values": [ExtResource("2_5tmop")]
+}
+
+[sub_resource type="Animation" id="Animation_qwsg1"]
+resource_name = "slide"
+length = 0.25
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(0, 0),
+"update": 1,
+"values": [ExtResource("19_khis8"), ExtResource("20_b88wv")]
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_331ug"]
+load_path = "res://.godot/imported/player-idle-1.png-0e6a0c54099f2ba859de5a4e9b4f86a3.ctex"
+
+[sub_resource type="Animation" id="Animation_ny14h"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_331ug"), ExtResource("2_pbfsw"), ExtResource("3_5tmop"), ExtResource("4_7ahtn"), ExtResource("5_7lmhl"), ExtResource("6_dx0e4"), ExtResource("7_jm5j8"), ExtResource("8_7hik5")]
+}
+
+[sub_resource type="Animation" id="Animation_ibah8"]
+resource_name = "jump"
+length = 0.33333334
+loop_mode = 1
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25),
+"transitions": PackedFloat32Array(0, 0, 0, 0),
+"update": 1,
+"values": [ExtResource("9_qtqh7"), ExtResource("10_2wuci"), ExtResource("11_iruf7"), ExtResource("12_j5n4i")]
+}
+
+[sub_resource type="Animation" id="Animation_3iwfv"]
+resource_name = "run"
+length = 0.5
+loop_mode = 1
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25, 0.33333334, 0.41666666),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0, 0),
+"update": 1,
+"values": [ExtResource("13_634y6"), ExtResource("14_efrwb"), ExtResource("15_hiqhm"), ExtResource("16_tkwlq"), ExtResource("17_hl5qd"), ExtResource("18_ek41f")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1xqrm"]
+_data = {
+&"RESET": SubResource("Animation_pgbbb"),
+&"crouch": SubResource("Animation_qwsg1"),
+&"idle": SubResource("Animation_ny14h"),
+&"jump": SubResource("Animation_ibah8"),
+&"run": SubResource("Animation_3iwfv")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5xo4"]
+size = Vector2(18, 19)
+
+[node name="player" type="CharacterBody2D" unique_id=557985602]
+script = ExtResource("1_4flbx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=696197453]
+texture_filter = 1
+texture = ExtResource("2_5tmop")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1671755217]
+libraries/ = SubResource("AnimationLibrary_1xqrm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=401125476]
+position = Vector2(0, 9.5)
+shape = SubResource("RectangleShape2D_l5xo4")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=33120160]
+texture_filter = 1
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
