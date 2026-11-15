@@ -7,6 +7,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 enum {IDLE, RUN, JUMP}
 var state = IDLE
 var dir = 0
+var jumped = false
 
 func _ready():
 	change_state(IDLE)
@@ -25,15 +26,23 @@ func jump():
 	change_state(JUMP)
 	velocity.y = jump_speed
 
+func reset():
+	$Camera.position_smoothing_enabled = false
+	position = Vector2.ZERO
+	velocity = Vector2.ZERO
+	change_state(IDLE)
+	dir = 0
+
 func get_input():
 	var rightbutton = Input.is_action_just_pressed("right")
 	var leftbutton = Input.is_action_just_pressed("left")
 	var jumpbutton = Input.is_action_pressed("jump")
+	if jumpbutton: jumped = true
 	
-	if rightbutton and is_on_floor():
+	if rightbutton and is_on_floor() and jumped:
 		dir = 1
 		$Sprite.flip_h = false
-	if leftbutton and is_on_floor():
+	if leftbutton and is_on_floor() and jumped:
 		dir = -1
 		$Sprite.flip_h = true
 	velocity.x = dir * run_speed
@@ -54,11 +63,15 @@ func get_input():
 	# if falling, change to IDLE when hit ground
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
-		
+
+
 func _process(delta: float) -> void:
 	velocity.y += gravity * delta
+	$Camera.position_smoothing_enabled = true
 	get_input()
 	move_and_slide()
+	if Input.is_action_just_pressed("reset"): reset()
+	if position.y > 10: reset()
 	
 	$Camera.drag_horizontal_offset = dir
 	$RightParticles.emitting = dir == 1.
