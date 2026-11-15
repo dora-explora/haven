@@ -8,6 +8,7 @@ enum {IDLE, RUN, JUMP}
 var state = IDLE
 var dir = 0
 var jumped = false
+var level = 0
 
 func _ready():
 	change_state(IDLE)
@@ -28,7 +29,8 @@ func jump():
 
 func reset():
 	$Camera.position_smoothing_enabled = false
-	position = Vector2.ZERO
+	if level % 2 == 0: position = Vector2.ZERO
+	else: position = Vector2(2900., 0.)
 	velocity = Vector2.ZERO
 	change_state(IDLE)
 	dir = 0
@@ -37,31 +39,32 @@ func get_input():
 	var rightbutton = Input.is_action_just_pressed("right")
 	var leftbutton = Input.is_action_just_pressed("left")
 	var jumpbutton = Input.is_action_pressed("jump")
+	var onfloor = is_on_floor()
 	if jumpbutton: jumped = true
 	
-	if rightbutton and is_on_floor() and jumped:
-		dir = 1
-		$Sprite.flip_h = false
-	if leftbutton and is_on_floor() and jumped:
-		dir = -1
-		$Sprite.flip_h = true
+	if rightbutton and onfloor and jumped and state == IDLE: dir = 1
+	if leftbutton and onfloor and jumped and state == IDLE: dir = -1
 	velocity.x = dir * run_speed
 	if dir == 1: $Sprite.flip_h = false
 	elif dir == -1: $Sprite.flip_h = true
+	
 	# IDLE -> RUN when moving
 	if state == IDLE and velocity.x != 0:
 		change_state(RUN)
+	
 	# RUN -> IDLE when not moving
 	if state == RUN and velocity.x == 0:
 		change_state(IDLE)
+	
 	# change to jump when in air
-	if state in [IDLE, RUN] and !is_on_floor():
+	if state in [IDLE, RUN] and !onfloor:
 		change_state(JUMP)
+	
 	# only jump while on ground
-	if jumpbutton and is_on_floor():
+	if jumpbutton and onfloor:
 		jump()
 	# if falling, change to IDLE when hit ground
-	if state == JUMP and is_on_floor():
+	if state == JUMP and onfloor:
 		change_state(IDLE)
 
 

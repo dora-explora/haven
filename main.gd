@@ -16,6 +16,8 @@ func _ready() -> void:
 	add_child(levelinstance)
 	for wall: Area2D in get_tree().get_nodes_in_group("bouncable_walls"):
 		wall.connect("body_entered", on_bouncy_entered)
+	for wall: Area2D in get_tree().get_nodes_in_group("up_bouncable_walls"):
+		wall.connect("body_entered", on_up_bouncy_entered)
 	for spike: Area2D in get_tree().get_nodes_in_group("spikes"):
 		spike.connect("body_entered", on_spike_entered)
 
@@ -23,6 +25,7 @@ func levelup():
 	print("swapping!")
 	remove_child(levelinstance)
 	level += 1
+	$player.level = level
 	levelinstance = levels[level].instantiate()
 	call_deferred("add_child", levelinstance)
 
@@ -34,6 +37,12 @@ func _process(_delta: float) -> void:
 func on_bouncy_entered(body: Node2D) -> void:
 	if body == $player:
 		$player.dir = -$player.dir
+
+func on_up_bouncy_entered(body: Node2D) -> void:
+	if body == $player:
+		$player.dir = -$player.dir
+		$player.velocity.y = $player.jump_speed
+		
 
 func on_wallR_entered(body: Node2D) -> void:
 	if body != $player: return
