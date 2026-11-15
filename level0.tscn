@@ -261,7 +261,7 @@ shape = SubResource("RectangleShape2D_d1jni")
 [node name="Trampoline" parent="." unique_id=1271308281 instance=ExtResource("2_7irja")]
 position = Vector2(768, -13)
 
-[node name="upwall" type="Area2D" parent="." unique_id=12874908]
+[node name="upwall" type="Area2D" parent="." unique_id=12874908 groups=["up_bouncable_walls"]]
 position = Vector2(2141.25, -288.6875)
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="upwall" unique_id=1608483248]
