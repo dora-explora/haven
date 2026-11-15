@@ -3,14 +3,16 @@ extends Node2D
 var jumped = false
 var levels: Array[PackedScene]
 var levelinstance: Node2D
-var level = 0
+@export var level = 0
 
 func _ready() -> void:
 	$player/LeftParticles.emitting = true
 	$player/RightParticles.emitting = true
+	$player.level = level
 	levels = [
 		preload("res://level0.tscn"), 
-		preload("res://level1.tscn")
+		preload("res://level1.tscn"), 
+		preload("res://level2.tscn")
 	]
 	levelinstance = levels[level].instantiate()
 	add_child(levelinstance)
@@ -24,6 +26,7 @@ func _ready() -> void:
 func levelup():
 	print("swapping!")
 	remove_child(levelinstance)
+	if level == len(levels): return
 	level += 1
 	$player.level = level
 	levelinstance = levels[level].instantiate()

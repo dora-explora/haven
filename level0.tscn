@@ -192,12 +192,6 @@ size = Vector2(32.5, 64.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d1jni"]
 size = Vector2(18, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_37dtf"]
-size = Vector2(18, 79)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_swp47"]
-size = Vector2(21.5, 94.625)
-
 [node name="level 0" type="Node2D" unique_id=1800860964]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=376936665]
@@ -260,16 +254,6 @@ shape = SubResource("RectangleShape2D_d1jni")
 
 [node name="Trampoline" parent="." unique_id=1271308281 instance=ExtResource("2_7irja")]
 position = Vector2(768, -13)
-
-[node name="upwall" type="Area2D" parent="." unique_id=12874908 groups=["up_bouncable_walls"]]
-position = Vector2(2141.25, -288.6875)
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="upwall" unique_id=1608483248]
-position = Vector2(114.75, 120.1875)
-shape = SubResource("RectangleShape2D_37dtf")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="upwall" unique_id=206971594]
-shape = SubResource("RectangleShape2D_swp47")
 
 [node name="Trampoline2" parent="." unique_id=1391924217 instance=ExtResource("2_7irja")]
 position = Vector2(2240, -13)
