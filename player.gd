@@ -4,8 +4,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @export var run_speed = 150
 @export var jump_speed = -300
-enum {IDLE, RUN, JUMP, CROUCH}
+enum {IDLE, RUN, JUMP}
 var state = IDLE
+var dir = 0
 
 func _ready():
 	change_state(IDLE)
@@ -19,27 +20,25 @@ func change_state(new_state):
 			$AnimationPlayer.play("run")
 		JUMP:
 			$AnimationPlayer.play("jump")
-		CROUCH:
-			$AnimationPlayer.play("crouch")
 
-func _input(event):
-	# only allow jump if on ground
-	if event.is_action_released("jump") and is_on_floor():
-		change_state(JUMP)
-		velocity.y = jump_speed
+func jump():
+	change_state(JUMP)
+	velocity.y = jump_speed
 
 func get_input():
-	var right = Input.is_action_pressed("right")
-	var left = Input.is_action_pressed("left")
-	var crouch = Input.is_action_pressed("jump")
+	var rightbutton = Input.is_action_just_pressed("right")
+	var leftbutton = Input.is_action_just_pressed("left")
+	var jumpbutton = Input.is_action_pressed("jump")
 	
-	velocity.x = 0
-	if right:
-		velocity.x += run_speed
-		$Sprite2D.flip_h = false
-	if left:
-		velocity.x -= run_speed
-		$Sprite2D.flip_h = true
+	if rightbutton and is_on_floor():
+		dir = 1
+		$Sprite.flip_h = false
+	if leftbutton and is_on_floor():
+		dir = -1
+		$Sprite.flip_h = true
+	velocity.x = dir * run_speed
+	if dir == 1: $Sprite.flip_h = false
+	elif dir == -1: $Sprite.flip_h = true
 	# IDLE -> RUN when moving
 	if state == IDLE and velocity.x != 0:
 		change_state(RUN)
@@ -49,13 +48,14 @@ func get_input():
 	# change to jump when in air
 	if state in [IDLE, RUN] and !is_on_floor():
 		change_state(JUMP)
-	if crouch and is_on_floor():
-		change_state(CROUCH)
+	# only jump while on ground
+	if jumpbutton and is_on_floor():
+		jump()
 	# if falling, change to IDLE when hit ground
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
 		
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	velocity.y += gravity * delta
 	get_input()
 	move_and_slide()

@@ -19,15 +19,13 @@
 [ext_resource type="Texture2D" uid="uid://bc14miqpbn784" path="res://Squirrel/run/Sprites/player-run-4.png" id="16_tkwlq"]
 [ext_resource type="Texture2D" uid="uid://b0uhdqxtt0yvw" path="res://Squirrel/run/Sprites/player-run-5.png" id="17_hl5qd"]
 [ext_resource type="Texture2D" uid="uid://c8lm5o303xn5k" path="res://Squirrel/run/Sprites/player-run-6.png" id="18_ek41f"]
-[ext_resource type="Texture2D" uid="uid://bwy08xqg8a21w" path="res://Squirrel/crouch/Frames/player-crouch-1.png" id="19_khis8"]
-[ext_resource type="Texture2D" uid="uid://c6pqbtoxdkxvg" path="res://Squirrel/crouch/Frames/player-crouch-2.png" id="20_b88wv"]
 
 [sub_resource type="Animation" id="Animation_pgbbb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -35,24 +33,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0),
 "update": 1,
 "values": [ExtResource("2_5tmop")]
-}
-
-[sub_resource type="Animation" id="Animation_qwsg1"]
-resource_name = "slide"
-length = 0.25
-loop_mode = 1
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125),
-"transitions": PackedFloat32Array(0, 0),
-"update": 1,
-"values": [ExtResource("19_khis8"), ExtResource("20_b88wv")]
 }
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_331ug"]
@@ -65,7 +45,7 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -83,7 +63,7 @@ step = 0.083333336
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -101,7 +81,7 @@ step = 0.083333336
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -114,7 +94,6 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1xqrm"]
 _data = {
 &"RESET": SubResource("Animation_pgbbb"),
-&"crouch": SubResource("Animation_qwsg1"),
 &"idle": SubResource("Animation_ny14h"),
 &"jump": SubResource("Animation_ibah8"),
 &"run": SubResource("Animation_3iwfv")
@@ -123,21 +102,21 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5xo4"]
 size = Vector2(18, 19)
 
-[node name="player" type="CharacterBody2D" unique_id=557985602]
+[node name="Player" type="CharacterBody2D" unique_id=557985602]
 script = ExtResource("1_4flbx")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=696197453]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=696197453]
 texture_filter = 1
 texture = ExtResource("2_5tmop")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1671755217]
 libraries/ = SubResource("AnimationLibrary_1xqrm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=401125476]
+[node name="Collider" type="CollisionShape2D" parent="." unique_id=401125476]
 position = Vector2(0, 9.5)
 shape = SubResource("RectangleShape2D_l5xo4")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=33120160]
+[node name="Camera" type="Camera2D" parent="." unique_id=33120160]
 texture_filter = 1
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
