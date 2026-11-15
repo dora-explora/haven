@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b4locmxaumksb" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://ctvbr3j7y67kj" path="res://assets/Terrain/Terrain (16x16).png" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cnt3r2l1g3dhf" path="res://trampoline.tscn" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://rr1t5dxb0wd8" path="res://assets/Background/Gray.png" id="5_lquwl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("2_0xm2m")
@@ -200,9 +201,6 @@ jump_speed = -600
 [node name="Platforms" type="StaticBody2D" parent="." unique_id=1561388844]
 physics_material_override = SubResource("PhysicsMaterial_l5xo4")
 
-[node name="Sprite2D" type="Sprite2D" parent="Platforms" unique_id=148715251]
-position = Vector2(0, 50)
-
 [node name="GrassPlatform" type="CollisionShape2D" parent="Platforms" unique_id=40812768]
 position = Vector2(1368, 40)
 shape = SubResource("RectangleShape2D_ig7tw")
@@ -247,3 +245,12 @@ shape = SubResource("RectangleShape2D_d1jni")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="wall" unique_id=203847151]
 position = Vector2(-670.67, -204.26999)
 shape = SubResource("RectangleShape2D_37dtf")
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=701587630]
+z_index = -1
+repeat_size = Vector2(64, 64)
+repeat_times = 30
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=353402412]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_lquwl")

@@ -110,8 +110,8 @@ emission_shape = 3
 emission_box_extents = Vector3(0, 150, 0)
 direction = Vector3(-1, 0, 0)
 spread = 20.0
-initial_velocity_min = 350.0
-initial_velocity_max = 450.0
+initial_velocity_min = 250.0
+initial_velocity_max = 350.0
 gravity = Vector3(-1000, 0, 0)
 turbulence_enabled = true
 turbulence_influence_min = 0.010000001
@@ -122,8 +122,8 @@ particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(0, 150, 0)
 spread = 20.0
-initial_velocity_min = 350.0
-initial_velocity_max = 450.0
+initial_velocity_min = 250.0
+initial_velocity_max = 350.0
 gravity = Vector3(1000, 0, 0)
 turbulence_enabled = true
 turbulence_influence_min = 0.010000001
@@ -150,14 +150,16 @@ position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 
 [node name="RightParticles" type="GPUParticles2D" parent="." unique_id=957087462]
-position = Vector2(310, 0)
+position = Vector2(300, 0)
+emitting = false
 amount = 30
 texture = ExtResource("20_5tmop")
-lifetime = 2.0
+lifetime = 1.5
 process_material = SubResource("ParticleProcessMaterial_pbfsw")
 
 [node name="LeftParticles" type="GPUParticles2D" parent="." unique_id=2014533221]
-position = Vector2(-310, 0)
+position = Vector2(-300, 0)
+emitting = false
 amount = 30
 texture = ExtResource("21_7ahtn")
 lifetime = 2.0
