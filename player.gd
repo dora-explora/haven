@@ -59,5 +59,9 @@ func _process(delta: float) -> void:
 	velocity.y += gravity * delta
 	get_input()
 	move_and_slide()
-	if dir != 0:
-		$Camera.drag_horizontal_offset = dir
+	
+	$Camera.drag_horizontal_offset = dir
+	$RightParticles.emitting = dir == 1.
+	$RightParticles.visible = dir == 1.
+	$LeftParticles.emitting = dir == -1.
+	$LeftParticles.visible = dir == -1.
