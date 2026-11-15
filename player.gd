@@ -59,3 +59,5 @@ func _process(delta: float) -> void:
 	velocity.y += gravity * delta
 	get_input()
 	move_and_slide()
+	if dir != 0:
+		$Camera.drag_horizontal_offset = dir

@@ -121,3 +121,5 @@ texture_filter = 1
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
+
+[node name="Particles" type="GPUParticles2D" parent="." unique_id=1661439459]
