@@ -24,7 +24,7 @@ func levelup():
 	remove_child(levelinstance)
 	level += 1
 	levelinstance = levels[level].instantiate()
-	add_child(levelinstance)
+	call_deferred("add_child", levelinstance)
 
 func _process(_delta: float) -> void:
 	if $player.jumped:
@@ -34,7 +34,17 @@ func _process(_delta: float) -> void:
 func on_bouncy_entered(body: Node2D) -> void:
 	if body == $player:
 		$player.dir = -$player.dir
-	if (level % 2 == 0 and body.name == "wallR") or (level % 2 == 1 and body.name == "wallL"):
+
+func on_wallR_entered(body: Node2D) -> void:
+	if body != $player: return
+	$player.dir = -$player.dir
+	if level % 2 == 0:
+		levelup()
+	
+func on_wallL_entered(body: Node2D) -> void:
+	if body != $player: return
+	$player.dir = -$player.dir
+	if level % 2 == 1:
 		levelup()
 
 func on_spike_entered(_body: Node2D) -> void:
