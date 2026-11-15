@@ -186,6 +186,18 @@ size = Vector2(16, 160)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37dtf"]
 size = Vector2(21.34, 413.45996)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y78tm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_lquwl"]
+font_color = Color(0.8812894, 0.8812895, 0.8812893, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l5xo4"]
+font_size = 10
+font_color = Color(0.73532224, 0.7353223, 0.73532224, 1)
+
 [node name="main" type="Node2D" unique_id=1913944594]
 script = ExtResource("1_h2yge")
 
@@ -194,7 +206,7 @@ tile_map_data = PackedByteArray("AAAJAAAAAAAHAAAAAAAKAAAAAAAHAAAAAAALAAAAAAAHAAA
 tile_set = SubResource("TileSet_y78tm")
 
 [node name="player" parent="." unique_id=557985602 instance=ExtResource("1_ig7tw")]
-position = Vector2(0, -256)
+position = Vector2(0, -466)
 run_speed = 500
 jump_speed = -600
 
@@ -245,12 +257,52 @@ shape = SubResource("RectangleShape2D_d1jni")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="wall" unique_id=203847151]
 position = Vector2(-670.67, -204.26999)
 shape = SubResource("RectangleShape2D_37dtf")
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=701587630]
+
+[node name="ParallaxBackground" type="Parallax2D" parent="." unique_id=701587630]
 z_index = -1
 repeat_size = Vector2(64, 64)
 repeat_times = 30
 
-[node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=353402412]
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground" unique_id=353402412]
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_lquwl")
+
+[node name="StartPlatform" type="StaticBody2D" parent="." unique_id=1438755453]
+position = Vector2(0, -450)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartPlatform" unique_id=1563917657]
+position = Vector2(0, 3)
+shape = SubResource("WorldBoundaryShape2D_y78tm")
+
+[node name="StartTileMapLayer" type="TileMapLayer" parent="StartPlatform" unique_id=837574484]
+position = Vector2(0, 450)
+tile_map_data = PackedByteArray("AAD//+T/AAASAAQAAAAAAOT/AAASAAQAAAABAOT/AAASAAQAAAACAOT/AAASAAQAAAD+/+T/AAASAAQAAAD9/+T/AAASAAQAAAADAOT/AAATAAQAAAADAOX/AAASAAYAAAD8/+X/AAARAAYAAAD8/+T/AAARAAQAAAD9/+X/AAASAAYAAAD+/+X/AAASAAYAAAD//+X/AAASAAYAAAAAAOX/AAASAAYAAAABAOX/AAASAAYAAAACAOX/AAASAAYAAAA=")
+tile_set = SubResource("TileSet_y78tm")
+
+[node name="TitleLabel" type="Label" parent="StartPlatform" unique_id=2125118985]
+offset_left = -40.0
+offset_top = -136.0
+offset_right = 41.0
+offset_bottom = -91.0
+text = "TITLE"
+label_settings = SubResource("LabelSettings_7mycd")
+
+[node name="JumpLabel" type="Label" parent="StartPlatform" unique_id=610209903]
+offset_left = -91.0
+offset_top = -92.0
+offset_right = 90.0
+offset_bottom = -69.0
+text = "press jump to go down!"
+label_settings = SubResource("LabelSettings_lquwl")
+horizontal_alignment = 1
+
+[node name="RunLabel" type="Label" parent="." unique_id=495747457]
+z_index = 1
+offset_left = -60.0
+offset_top = 19.0
+offset_right = 60.0
+offset_bottom = 42.0
+text = "and press right to run"
+label_settings = SubResource("LabelSettings_l5xo4")
+horizontal_alignment = 1
