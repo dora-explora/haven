@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://s1x72cgubntg" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b4locmxaumksb" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://ctvbr3j7y67kj" path="res://assets/Terrain/Terrain (16x16).png" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://djcyt5yvvs1eb" path="res://level1.tscn" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dyfj42uo115uh" path="res://level0.tscn" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://rr1t5dxb0wd8" path="res://assets/Background/Gray.png" id="5_lquwl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
@@ -159,8 +159,11 @@ sources/0 = SubResource("TileSetAtlasSource_h2yge")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(3088, 80)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jjcs"]
+size = Vector2(98, 450)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37dtf"]
-size = Vector2(21.34, 413.45996)
+size = Vector2(21.34, 423.99997)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y78tm"]
 
@@ -192,10 +195,14 @@ jump_speed = -600
 position = Vector2(1368, 40)
 shape = SubResource("RectangleShape2D_ig7tw")
 
+[node name="wallcollisions" type="CollisionShape2D" parent="floor" unique_id=115539595]
+position = Vector2(-223, -207)
+shape = SubResource("RectangleShape2D_1jjcs")
+
 [node name="wallL" type="Area2D" parent="." unique_id=1057779248 groups=["bouncable_walls"]]
 
 [node name="Collider" type="CollisionShape2D" parent="wallL" unique_id=203847151]
-position = Vector2(-178.66998, -217.26999)
+position = Vector2(-178.66998, -211.99998)
 shape = SubResource("RectangleShape2D_37dtf")
 
 [node name="ParallaxBackground" type="Parallax2D" parent="." unique_id=701587630]
@@ -247,4 +254,4 @@ text = "and press right to run"
 label_settings = SubResource("LabelSettings_l5xo4")
 horizontal_alignment = 1
 
-[node name="Node2D" parent="." unique_id=1800860964 instance=ExtResource("5_7mycd")]
+[node name="level 0" parent="." unique_id=1800860964 instance=ExtResource("5_7mycd")]
