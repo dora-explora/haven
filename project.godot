@@ -25,6 +25,7 @@ window/stretch/aspect="expand"
 bouncable_walls=""
 death_barrier=""
 spikes=""
+up_bouncable_walls=""
 
 [input]
 
