@@ -27,14 +27,6 @@ func jump():
 	change_state(JUMP)
 	velocity.y = jump_speed
 
-func reset():
-	$Camera.position_smoothing_enabled = false
-	if level % 2 == 0: position = Vector2.ZERO
-	else: position = Vector2(2900., 0.)
-	velocity = Vector2.ZERO
-	change_state(IDLE)
-	dir = 0
-
 func get_input():
 	var rightbutton = Input.is_action_just_pressed("right")
 	var leftbutton = Input.is_action_just_pressed("left")
@@ -73,8 +65,6 @@ func _process(delta: float) -> void:
 	$Camera.position_smoothing_enabled = true
 	get_input()
 	move_and_slide()
-	if Input.is_action_just_pressed("reset"): reset()
-	if position.y > 10: reset()
 	
 	$Camera.drag_horizontal_offset = dir
 	$RightParticles.emitting = dir == 1.
