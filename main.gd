@@ -40,8 +40,10 @@ func levelup():
 
 func reset():
 	$player/Camera.position_smoothing_enabled = false
-	level = 0
-	if level % 2 == 0: $player.position = Vector2.ZERO
+	level = -1
+	levelup()
+	$player.position = Vector2.ZERO
+	#if level % 2 == 0: $player.position = Vector2.ZERO
 	#else: $player.position = Vector2(2900., 0.)
 	$player.velocity = Vector2.ZERO
 	$player.change_state(0)
