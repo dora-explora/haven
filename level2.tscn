@@ -1,9 +1,8 @@
 [gd_scene format=4 uid="uid://bxgcqlhrsigap"]
 
-[ext_resource type="Texture2D" uid="uid://ctvbr3j7y67kj" path="res://assets/Terrain/Terrain (16x16).png" id="1_r40rm"]
+[ext_resource type="Texture2D" uid="uid://ctvbr3j7y67kj" path="res://assets/Terrain (16x16).png" id="1_r40rm"]
 [ext_resource type="PackedScene" uid="uid://cnt3r2l1g3dhf" path="res://trampoline.tscn" id="2_6q4t8"]
-[ext_resource type="Texture2D" uid="uid://bxqncyox48hfu" path="res://assets/Traps/Spikes/Idle.png" id="2_8tcn8"]
-[ext_resource type="Texture2D" uid="uid://f3fb32qkot33" path="res://assets/Traps/Spikes/spike.png" id="3_8tcn8"]
+[ext_resource type="Texture2D" uid="uid://bb2eyoq05l5r3" path="res://assets/spike.png" id="2_8tcn8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ootpb"]
 texture = ExtResource("1_r40rm")
@@ -152,12 +151,16 @@ texture = ExtResource("1_r40rm")
 19:10/0 = 0
 20:10/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r6vdu"]
+load_path = "res://.godot/imported/Idle.png-2d88d05b1d1f4b7269375c770b1d4739.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r6vdu"]
-texture = ExtResource("2_8tcn8")
+texture = SubResource("CompressedTexture2D_r6vdu")
+use_texture_padding = false
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21xmu"]
-texture = ExtResource("3_8tcn8")
+texture = ExtResource("2_8tcn8")
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_v38iq"]

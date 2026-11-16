@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cnt3r2l1g3dhf"]
 
 [ext_resource type="Script" uid="uid://bvn2g2ywgc7ap" path="res://trampoline.gd" id="1_cilbb"]
-[ext_resource type="Texture2D" uid="uid://cjiuovojnyf4g" path="res://assets/Traps/Trampoline/Jump (28x28).png" id="1_d0j4r"]
+[ext_resource type="Texture2D" uid="uid://cjiuovojnyf4g" path="res://assets/Jump (28x28).png" id="1_d0j4r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cilbb"]
 atlas = ExtResource("1_d0j4r")

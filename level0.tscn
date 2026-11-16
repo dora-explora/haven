@@ -1,8 +1,7 @@
 [gd_scene format=4 uid="uid://dyfj42uo115uh"]
 
-[ext_resource type="Texture2D" uid="uid://ctvbr3j7y67kj" path="res://assets/Terrain/Terrain (16x16).png" id="1_nmkr7"]
+[ext_resource type="Texture2D" uid="uid://ctvbr3j7y67kj" path="res://assets/Terrain (16x16).png" id="1_nmkr7"]
 [ext_resource type="PackedScene" uid="uid://cnt3r2l1g3dhf" path="res://trampoline.tscn" id="2_7irja"]
-[ext_resource type="Texture2D" uid="uid://f3fb32qkot33" path="res://assets/Traps/Spikes/spike.png" id="2_vhh4d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ootpb"]
 texture = ExtResource("1_nmkr7")
@@ -151,8 +150,11 @@ texture = ExtResource("1_nmkr7")
 19:10/0 = 0
 20:10/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7irja"]
+load_path = "res://.godot/imported/spike.png-58f833399c327c55ae34eb612a8dfe0c.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tgtrw"]
-texture = ExtResource("2_vhh4d")
+texture = SubResource("CompressedTexture2D_7irja")
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_v38iq"]
