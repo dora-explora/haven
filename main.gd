@@ -65,5 +65,6 @@ func on_wallL_entered(body: Node2D) -> void:
 	if level % 2 == 1:
 		levelup()
 
-func on_spike_entered(_body: Node2D) -> void:
+func on_spike_entered(body: Node2D) -> void:
+	if body != $player: return
 	$player.reset()
