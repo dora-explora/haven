@@ -1,6 +1,7 @@
 extends Node2D
 
 var jumped = false
+var numlevels = 3
 var levels: Array[PackedScene]
 var levelinstance: Node2D
 @export var level = 0
@@ -22,12 +23,22 @@ func _ready() -> void:
 		wall.connect("body_entered", on_up_bouncy_entered)
 	for spike: Area2D in get_tree().get_nodes_in_group("spikes"):
 		spike.connect("body_entered", on_spike_entered)
+	
 
 func levelup():
 	$RunLabel.visible = false
+	for wall: Area2D in get_tree().get_nodes_in_group("bouncable_walls"):
+		wall.disconnect("body_entered", on_bouncy_entered)
+	for wall: Area2D in get_tree().get_nodes_in_group("up_bouncable_walls"):
+		wall.disconnect("body_entered", on_up_bouncy_entered)
+	for spike: Area2D in get_tree().get_nodes_in_group("spikes"):
+		spike.disconnect("body_entered", on_spike_entered)
 	remove_child(levelinstance)
 	level += 1
-	if level >= len(levels): return
+	if level >= len(levels):
+		$player/Winscreen.visible = true
+		Engine.time_scale = 0.05
+		return
 	$player.level = level
 	levelinstance = levels[level].instantiate()
 	add_child(levelinstance)
@@ -43,6 +54,7 @@ func reset():
 	level = -1
 	levelup()
 	$player.position = Vector2.ZERO
+	$player/Sprite.flip_h = false
 	#if level % 2 == 0: $player.position = Vector2.ZERO
 	#else: $player.position = Vector2(2900., 0.)
 	$player.velocity = Vector2.ZERO
@@ -53,8 +65,18 @@ func _process(_delta: float) -> void:
 	if $player.jumped:
 		$StartPlatform.visible = false
 		$StartPlatform/CollisionShape2D.disabled = true
-	if Input.is_action_just_pressed("reset"): reset()
-	if position.y > 10: reset()
+	if Input.is_action_just_pressed("reset"): 
+		print("ig if you want to")
+		reset()
+	if position.y > 10: 
+		print("too low")
+		reset()
+	if $player.dir == 0:
+		$AudioStreamPlayer2D.volume_db = 0
+		$AudioStreamPlayer2D2.volume_db = -80
+	else:
+		$AudioStreamPlayer2D2.volume_db = 0
+		$AudioStreamPlayer2D.volume_db = -80
 	
 func on_bouncy_entered(body: Node2D) -> void:
 	if body == $player:
@@ -79,4 +101,6 @@ func on_wallL_entered(body: Node2D) -> void:
 
 func on_spike_entered(body: Node2D) -> void:
 	if body != $player: return
+	print($player.position)
+	print("spiky")
 	reset()

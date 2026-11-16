@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dcurtiark5wse"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l5xo4"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_mjs6f"]
+
+[node name="Control" type="Control" unique_id=1153487577]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1118254073]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 75.0
+offset_right = 1083.0
+offset_bottom = 573.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=644068150]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=645195639]
+z_index = 2
+layout_mode = 2
+text = "You Win!"
+label_settings = SubResource("LabelSettings_l5xo4")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1430808261]
+z_index = 2
+layout_mode = 2
+text = "yay"
+label_settings = SubResource("LabelSettings_mjs6f")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1345160138]
+z_index = 1
+layout_mode = 0
+offset_left = -92.0
+offset_top = -109.0
+offset_right = 1292.0
+offset_bottom = 798.0
+color = Color(0.36020947, 0.36020944, 0.36020947, 0.4117647)
